@@ -107,7 +107,7 @@ const Body = () => {
       "https://www.swiggy.com/dapi/restaurants/list/v5?lat=23.1708138&lng=79.93047419999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
     );
     const json = await data.json();
-    console.log(json);
+    // console.log(json);
     setRestaruants(
       json?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
@@ -165,7 +165,12 @@ const Body = () => {
             <ShimmerUi />
           </div>
         ) : (
-          Restaurants.length === 0 && <h1>No restaurants found!</h1>
+          Restaurants.length === 0 && (
+            <div>
+              <h1>No restaurants found!</h1>
+              <img src="https://cdni.iconscout.com/illustration/premium/thumb/no-data-found-8867280-7265556.png?f=webp" />
+            </div>
+          )
         )}
         {Restaurants.map((restaurant) => {
           return (
