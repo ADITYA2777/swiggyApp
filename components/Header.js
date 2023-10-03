@@ -2,9 +2,11 @@
 import React, { useState } from 'react'
 import logo from "../assets/image/foodvalapng.jpg"
 import { Link } from "react-router-dom"
+import useOnline from '../helper/UseOniline'
 
 const Header = () => {
-
+  
+  const IsOnline = useOnline()
 
   const Title = () => (
     <a href="/">
@@ -33,8 +35,12 @@ const Header = () => {
               <li>
                 <Link to={"/Cart"}>Cart</Link>
               </li>
+              <li>
+                <Link to={"/Insmart"}>InsertMart</Link>
+              </li>
             </ul>
           </div>
+          <h2>{IsOnline ? "🍏Online" : "🍎offline"}</h2>
           {isLogged ? (
             <button onClick={() => setIsLogged(false)}>LOGIN</button>
           ) : (
@@ -48,3 +54,6 @@ const Header = () => {
 
 
 export default Header
+
+
+

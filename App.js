@@ -1,14 +1,25 @@
-import React from "react";
+import React, { Suspense, lazy } from "react";
 import ReactDOM from "react-dom/client";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
-
 import { Outlet, RouterProvider, createBrowserRouter, } from "react-router-dom";
-import About from "./components/About";
 import Error from "./components/Error";
 import Contact from "./components/Contact";
 import Body from "./components/Body";
 import RestaurantsMenu from "./components/RestaurantsMenu";
+import ShimmerUi from "./components/ShimmerUI";
+
+
+const Insert = lazy(() => import("./components/InsertMart"));
+const About = lazy(() => import("./components/About"));
+
+//chunking
+//LazyLoading
+//dynamic Bundling
+//Code Splitting
+//On Demand Loading
+//Import loading
+
 
 const AppLayout = () => {
     return (
@@ -28,20 +39,32 @@ const AppRouter = createBrowserRouter([
     children: [
       {
         path: "/",
-        element:<Body/>,
+        element: <Body />,
       },
       {
         path: "/About",
-        element:<About />,
+        element: (
+          <Suspense fallback={<ShimmerUi/>}>
+            <About />
+          </Suspense>
+        ),
       },
       {
         path: "/contact",
-        element:<Contact />,
+        element: <Contact />,
       },
       {
-        path: "/restarants/:resId",
-        element:<RestaurantsMenu/>
-      }
+        path: "/Restaurant/:resId",
+        element: <RestaurantsMenu />,
+      },
+      {
+        path: "/Insmart",
+        element: (
+          <Suspense fallback={<ShimmerUi />}>
+            <Insert/>
+          </Suspense>
+        ),
+      },
     ],
   },
 ]);
