@@ -45,16 +45,16 @@ const Body = () => {
     <ShimmerUi />
   ) : (
     <>
-      <div className="Search-container">
+      <div className="Search-container p-5 my-5 bg-slate-300 ">
         <input
           type="text"
-          className="input-search"
+          className="input-search "
           placeholder="Search"
           value={SearchText}
           onChange={(e) => setSearchText(e.target.value)}
         />
         <button
-          className="search_btn"
+          className="search_btn  p-2 m-2 bg-slate-600 text-white rounded-lg  hover:bg-green-500 "
           onClick={() => {
             const data = filterData(SearchText, originalRestaurants); // Use the original list for filtering
             setRestaruants(data);
@@ -63,7 +63,7 @@ const Body = () => {
           Search
         </button>
         <button
-          className="reset_btn"
+          className="reset_btn  p-2 m-2 bg-slate-600 text-white rounded-lg  hover:bg-red-500"
           onClick={() => setRestaruants(originalRestaurants)}
         >
           Reset

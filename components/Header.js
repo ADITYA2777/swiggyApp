@@ -10,14 +10,14 @@ const Header = () => {
 
   const Title = () => (
     <a href="/">
-      <img className="logo" alt="logo" src={logo} />
+      <img className="logo" alt="logo" src={logo}/>
     </a>
   );
 
   const [isLogged,setIsLogged]= useState(false)
     return (
       <>
-        <div className="header">
+        <div className="header shadow-lg shadow-red-300 rounded-xl text-fuchsia-700 ">
           <Title />
           <div className="nav-items">
             <ul>
@@ -40,11 +40,21 @@ const Header = () => {
               </li>
             </ul>
           </div>
-          <h2>{IsOnline ? "🍏Online" : "🍎offline"}</h2>
+          <h2 className="p-4">{IsOnline ? "🍏Online" : "🍎offline"}</h2>
           {isLogged ? (
-            <button onClick={() => setIsLogged(false)}>LOGIN</button>
+            <button
+              className=" bg-pink-400 text-cyan-200 p-2 m-3 mb-9 rounded-xl"
+              onClick={() => setIsLogged(false)}
+            >
+              LOGIN
+            </button>
           ) : (
-            <button onClick={() => setIsLogged(true)}>LOGOUT</button>
+            <button
+              className=" bg-pink-400 text-cyan-200 p-2 m-3 mb-9 rounded-xl hover:bg-slate-50"
+              onClick={() => setIsLogged(true)}
+            >
+              LOGOUT
+            </button>
           )}
         </div>
       </>
