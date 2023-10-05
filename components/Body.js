@@ -1,5 +1,5 @@
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState  } from "react";
 import RestrauntantCard from "./RestrauntantCard";
 import { ResturantList } from "../helper/Restraunts-List";
 import ShimmerUi from "./ShimmerUI";
@@ -12,6 +12,7 @@ const Body = () => {
   const [SearchText, setSearchText] = useState("");
   const [originalRestaurants, setOriginalRestaurants] = useState([]); // Store the original list
   const [searched, setSearched] = useState(false); // Track if a search has been performed
+  // const [user] = useContext(UserContext);
 
   useEffect(() => {
     getResturants();
@@ -68,6 +69,7 @@ const Body = () => {
         >
           Reset
         </button>
+        
       </div>
       <div className="restaruants-list">
         {searched && Restaurants.length === 0 ? (

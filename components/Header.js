@@ -1,12 +1,15 @@
 
-import React, { useState } from 'react'
+import React, { useState,useContext } from 'react'
 import logo from "../assets/image/foodvalapng.jpg"
 import { Link } from "react-router-dom"
 import useOnline from '../helper/UseOniline'
+import UserContext from '../helper/UseContext'
 
 const Header = () => {
-  
+
   const IsOnline = useOnline()
+
+  const { user} = useContext(UserContext)
 
   const Title = () => (
     <a href="/">
@@ -41,6 +44,7 @@ const Header = () => {
             </ul>
           </div>
           <h2 className="p-4">{IsOnline ? "🍏Online" : "🍎offline"}</h2>
+          <span className='text-amber-400 text-xl font-bold p-4 '>{ user.name}</span>
           {isLogged ? (
             <button
               className=" bg-pink-400 text-cyan-200 p-2 m-3 mb-9 rounded-xl"
