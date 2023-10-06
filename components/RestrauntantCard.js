@@ -7,11 +7,11 @@ const RestrauntantCard = ({ name, cloudinaryImageId, cuisines, avgRating }) => {
   const{ user} = useContext(UserContext)
   return (
     <div className="card ">
-      <img src={IMG_URL + cloudinaryImageId} />
+      <img  className="w-56" src={IMG_URL + cloudinaryImageId} />
       <h2>{name}</h2>
       <h3>{cuisines.join(" ,")}</h3>
       <h4>{avgRating}</h4>
-      <h3 className="font-bold text-purple-800">{ user.email}</h3>
+      {/* <h3 className="font-bold text-purple-800">{ user.email}</h3> */}
     </div>
   );
 };

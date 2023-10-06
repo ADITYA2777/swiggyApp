@@ -9,6 +9,9 @@ import Body from "./components/Body";
 import RestaurantsMenu from "./components/RestaurantsMenu";
 import ShimmerUi from "./components/ShimmerUI";
 import UserContext from "./helper/UseContext";
+import { Provider } from "react-redux";
+import store from "./helper/store";
+import Cart from "./components/Cart";
 
 const Insert = lazy(() => import("./components/InsertMart"));
 const About = lazy(() => import("./components/About"));
@@ -26,18 +29,20 @@ const AppLayout = () => {
     name: "AdityaJain",
     email:"aditya@gmail123.com",
   })
-    return (
+  return (
+    <Provider store={store} >
       <UserContext.Provider
         value={{
           user: user,
-          setUser:setUser,
+          setUser: setUser,
         }}
       >
         <Header />
         <Outlet />
         <Footer />
       </UserContext.Provider>
-    );
+    </Provider>
+  );
 }
 
 const AppRouter = createBrowserRouter([
@@ -73,6 +78,10 @@ const AppRouter = createBrowserRouter([
             <Insert/>
           </Suspense>
         ),
+      },
+      {
+        path: "/cart",
+        element:<Cart/>
       },
     ],
   },

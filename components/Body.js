@@ -1,5 +1,4 @@
-
-import React, { useEffect, useState  } from "react";
+import React, { useEffect, useState } from "react";
 import RestrauntantCard from "./RestrauntantCard";
 import { ResturantList } from "../helper/Restraunts-List";
 import ShimmerUi from "./ShimmerUI";
@@ -32,15 +31,12 @@ const Body = () => {
     );
   }
 
-
-   const IsOnline = useOnline(true);
-   if (!IsOnline) {
-      return  <h1> Opps Please check your internet Connection!!</h1>;
-   }
+  const IsOnline = useOnline(true);
+  if (!IsOnline) {
+    return <h1> Opps Please check your internet Connection!!</h1>;
+  }
 
   if (!originalRestaurants) return null;
-
- 
 
   return originalRestaurants?.length === 0 ? (
     <ShimmerUi />
@@ -69,7 +65,6 @@ const Body = () => {
         >
           Reset
         </button>
-        
       </div>
       <div className="restaruants-list">
         {searched && Restaurants.length === 0 ? (
@@ -100,12 +95,3 @@ const Body = () => {
 };
 
 export default Body;
-
-
-
-
-
-
-
-
-
